@@ -64,6 +64,18 @@ async function options() {
         console.log('I am sorry! It looks like we have encountered an Error.');
   }
 }
+
+// ------------mySQL query functions-------------- //
+function viewDepartments() {
+  const query = `SELECT * FROM department ORDER BY id`;
+    sequelize.query(query, (err, res) => {
+        if (err) throw err;
+        console.log('\n');
+        console.log('View All Departments');
+        console.log('\n');
+        console.table(rows);
+  })
+}
 // set app to run locally // connect to db
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
